@@ -175,13 +175,18 @@ export namespace T {
         
         export type key<GPAnnotation> = string
         
-        export type token<GPAnnotation> = mh.T.SimpleStringToken<T.Annotation<GPAnnotation>>
+        export namespace token {
+            
+            export type O<GPAnnotation> = mh.T.SimpleStringToken<T.Annotation<GPAnnotation>>
+        }
+        
+        export type token<GPAnnotation> = [ false ] | [ true, mh.T.SimpleStringToken<T.Annotation<GPAnnotation>>]
     }
     
     export type Property<GPAnnotation> = {
         readonly 'definition': mschema.T.value
         readonly 'key': string
-        readonly 'token': mh.T.SimpleStringToken<T.Annotation<GPAnnotation>>
+        readonly 'token': [ false ] | [ true, mh.T.SimpleStringToken<T.Annotation<GPAnnotation>>]
     }
     
     export namespace SimpleString {

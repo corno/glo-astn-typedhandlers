@@ -79,7 +79,7 @@ export const $: mglossary.T.Glossary<string> = {
         })),
         "Property": type(group({
             "key": member(string()),
-            "token": member(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "SimpleStringToken")),//cannot be shorthand, so there must be a token, so not optional
+            "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "SimpleStringToken"))),//cannot be shorthand, so there must be a token, so not optional
             "definition": member(reference("schema", "value")),
         })),
         "UnexpectedProperty": type(group({
