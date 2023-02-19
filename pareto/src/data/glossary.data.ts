@@ -9,9 +9,9 @@ import {
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
-const d = pd.wrapRawDictionary
+const d = pd.d
 
-export const $: mglossary.T.Glossary<string> = {
+export const $: mglossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
         //"common": "glo-pareto-common"
         "schema": "glo-astn-schema",
