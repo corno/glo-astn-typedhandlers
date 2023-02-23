@@ -7,11 +7,11 @@ import {
     method, dictionary, group, member, taggedUnion, types, func, data, type, computed, typeParameter, parametrizedType, parametrizedReference, boolean, glossaryParameter, optional, null_
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
 const d = pd.d
 
-export const $: mglossary.T.Glossary<pd.SourceLocation> = {
+export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
         //"common": "glo-pareto-common"
         "schema": "glo-astn-schema",
