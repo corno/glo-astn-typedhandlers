@@ -2,8 +2,8 @@ import * as pt from 'pareto-core-types'
 
 import { T   } from './types.generated'
 
-import * as mh from "glo-astn-handlers"
-import * as mschema from "glo-astn-schema"
+import * as gh from "glo-astn-handlers"
+import * as gschema from "glo-astn-schema"
 
 export type IDictionaryHandler<GPAnnotation> = {
     'onClose': ($: T.DictionaryClose<GPAnnotation>, ) => void
