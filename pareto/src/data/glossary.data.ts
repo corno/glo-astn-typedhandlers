@@ -32,18 +32,18 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "mixin": group({}),
                 "omitted": group({}),
             })),
-            "definition": member(reference("schema", "group"))
+            "definition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "group"))
         })),
         "List": type(group({
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "OpenArrayToken"))),
-            "definition": member(reference("schema", "list")),
+            "definition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "list")),
         })),
         "ListClose": type(group({
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "CloseArrayToken"))),
         })),
         "Dictionary": type(group({
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "OpenObjectToken"))),
-            "definition": member(reference("schema", "dictionary")),
+            "definition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "dictionary")),
         })),
         "DictionaryClose": type(group({
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "CloseObjectToken"))),
@@ -52,25 +52,25 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "CloseObjectToken"))),
         })),
         "TypeReference": type(group({
-            "definition": member(reference("schema", "type reference")),
+            "definition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "type reference")),
         })),
         "TaggedUnion": type(group({
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "TaggedUnionToken"))),
-            "definition": member(reference("schema", "tagged union")),
+            "definition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "tagged union")),
         })),
         "SimpleString": type(group({
             "value": member(string()),
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "SimpleStringToken"))),
-            "definition": member(reference("schema", "simple string")),
+            "definition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "simple string")),
         })),
         "MultilineString": type(group({
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "MultilineStringToken"))),
-            "definition": member(reference("schema", "multiline string")),
+            "definition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "multiline string")),
         })),
         "Option": type(group({
             "name": member(string()),
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "SimpleStringToken"))),
-            "definition": member(reference("schema", "options")),
+            "definition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "options")),
         })),
         "UnexpectedOption": type(group({
             "defaultOption": member(string()),//the unmarshaller will initialize the default option.
@@ -80,12 +80,12 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Property": type(group({
             "key": member(string()),
             "token": member(optional(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "SimpleStringToken"))),//cannot be shorthand, so there must be a token, so not optional
-            "definition": member(reference("schema", "value")),
+            "definition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "value")),
         })),
         "UnexpectedProperty": type(group({
             "expectedProperties": member(dictionary(null_())),
             "token": member(parametrizedReference("h", { "Annotation": typeReference("Annotation") }, "SimpleStringToken")),
-            "groupDefinition": member(reference("schema", "group")),
+            "groupDefinition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "group")),
         })),
     }),
     'interfaces': d({

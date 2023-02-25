@@ -9,7 +9,7 @@ export namespace T {
     
     export namespace Dictionary {
         
-        export type definition<GPAnnotation> = gschema.T.dictionary
+        export type definition<GPAnnotation> = gschema.T.dictionary<T.Annotation<GPAnnotation>>
         
         export namespace token {
             
@@ -20,7 +20,7 @@ export namespace T {
     }
     
     export type Dictionary<GPAnnotation> = {
-        readonly 'definition': gschema.T.dictionary
+        readonly 'definition': gschema.T.dictionary<T.Annotation<GPAnnotation>>
         readonly 'token': [ false ] | [ true, gh.T.OpenObjectToken<T.Annotation<GPAnnotation>>]
     }
     
@@ -54,7 +54,7 @@ export namespace T {
     
     export namespace Group {
         
-        export type definition<GPAnnotation> = gschema.T.group
+        export type definition<GPAnnotation> = gschema.T.group<T.Annotation<GPAnnotation>>
         
         export namespace _ltype {
             
@@ -79,7 +79,7 @@ export namespace T {
     }
     
     export type Group<GPAnnotation> = {
-        readonly 'definition': gschema.T.group
+        readonly 'definition': gschema.T.group<T.Annotation<GPAnnotation>>
         readonly 'type': 
             | ['mixin', {}]
             | ['omitted', {}]
@@ -103,7 +103,7 @@ export namespace T {
     
     export namespace List {
         
-        export type definition<GPAnnotation> = gschema.T.list
+        export type definition<GPAnnotation> = gschema.T.list<T.Annotation<GPAnnotation>>
         
         export namespace token {
             
@@ -114,7 +114,7 @@ export namespace T {
     }
     
     export type List<GPAnnotation> = {
-        readonly 'definition': gschema.T.list
+        readonly 'definition': gschema.T.list<T.Annotation<GPAnnotation>>
         readonly 'token': [ false ] | [ true, gh.T.OpenArrayToken<T.Annotation<GPAnnotation>>]
     }
     
@@ -134,7 +134,7 @@ export namespace T {
     
     export namespace MultilineString {
         
-        export type definition<GPAnnotation> = gschema.T.multiline__string
+        export type definition<GPAnnotation> = gschema.T.multiline__string<T.Annotation<GPAnnotation>>
         
         export namespace token {
             
@@ -145,13 +145,13 @@ export namespace T {
     }
     
     export type MultilineString<GPAnnotation> = {
-        readonly 'definition': gschema.T.multiline__string
+        readonly 'definition': gschema.T.multiline__string<T.Annotation<GPAnnotation>>
         readonly 'token': [ false ] | [ true, gh.T.MultilineStringToken<T.Annotation<GPAnnotation>>]
     }
     
     export namespace Option {
         
-        export type definition<GPAnnotation> = gschema.T.options
+        export type definition<GPAnnotation> = gschema.T.options<T.Annotation<GPAnnotation>>
         
         export type name<GPAnnotation> = string
         
@@ -164,14 +164,14 @@ export namespace T {
     }
     
     export type Option<GPAnnotation> = {
-        readonly 'definition': gschema.T.options
+        readonly 'definition': gschema.T.options<T.Annotation<GPAnnotation>>
         readonly 'name': string
         readonly 'token': [ false ] | [ true, gh.T.SimpleStringToken<T.Annotation<GPAnnotation>>]
     }
     
     export namespace Property {
         
-        export type definition<GPAnnotation> = gschema.T.value
+        export type definition<GPAnnotation> = gschema.T.value<T.Annotation<GPAnnotation>>
         
         export type key<GPAnnotation> = string
         
@@ -184,14 +184,14 @@ export namespace T {
     }
     
     export type Property<GPAnnotation> = {
-        readonly 'definition': gschema.T.value
+        readonly 'definition': gschema.T.value<T.Annotation<GPAnnotation>>
         readonly 'key': string
         readonly 'token': [ false ] | [ true, gh.T.SimpleStringToken<T.Annotation<GPAnnotation>>]
     }
     
     export namespace SimpleString {
         
-        export type definition<GPAnnotation> = gschema.T.simple__string
+        export type definition<GPAnnotation> = gschema.T.simple__string<T.Annotation<GPAnnotation>>
         
         export namespace token {
             
@@ -204,14 +204,14 @@ export namespace T {
     }
     
     export type SimpleString<GPAnnotation> = {
-        readonly 'definition': gschema.T.simple__string
+        readonly 'definition': gschema.T.simple__string<T.Annotation<GPAnnotation>>
         readonly 'token': [ false ] | [ true, gh.T.SimpleStringToken<T.Annotation<GPAnnotation>>]
         readonly 'value': string
     }
     
     export namespace TaggedUnion {
         
-        export type definition<GPAnnotation> = gschema.T.tagged__union
+        export type definition<GPAnnotation> = gschema.T.tagged__union<T.Annotation<GPAnnotation>>
         
         export namespace token {
             
@@ -222,17 +222,17 @@ export namespace T {
     }
     
     export type TaggedUnion<GPAnnotation> = {
-        readonly 'definition': gschema.T.tagged__union
+        readonly 'definition': gschema.T.tagged__union<T.Annotation<GPAnnotation>>
         readonly 'token': [ false ] | [ true, gh.T.TaggedUnionToken<T.Annotation<GPAnnotation>>]
     }
     
     export namespace TypeReference {
         
-        export type definition<GPAnnotation> = gschema.T.type__reference
+        export type definition<GPAnnotation> = gschema.T.type__reference<T.Annotation<GPAnnotation>>
     }
     
     export type TypeReference<GPAnnotation> = {
-        readonly 'definition': gschema.T.type__reference
+        readonly 'definition': gschema.T.type__reference<T.Annotation<GPAnnotation>>
     }
     
     export namespace UnexpectedOption {
@@ -264,14 +264,14 @@ export namespace T {
         
         export type expectedProperties<GPAnnotation> = pt.Dictionary<null>
         
-        export type groupDefinition<GPAnnotation> = gschema.T.group
+        export type groupDefinition<GPAnnotation> = gschema.T.group<T.Annotation<GPAnnotation>>
         
         export type token<GPAnnotation> = gh.T.SimpleStringToken<T.Annotation<GPAnnotation>>
     }
     
     export type UnexpectedProperty<GPAnnotation> = {
         readonly 'expectedProperties': pt.Dictionary<null>
-        readonly 'groupDefinition': gschema.T.group
+        readonly 'groupDefinition': gschema.T.group<T.Annotation<GPAnnotation>>
         readonly 'token': gh.T.SimpleStringToken<T.Annotation<GPAnnotation>>
     }
 }
