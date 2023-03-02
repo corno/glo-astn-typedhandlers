@@ -60,11 +60,11 @@ export namespace T {
             
             export namespace mixin {}
             
-            export type mixin<GPAnnotation> = {}
+            export type mixin<GPAnnotation> = null
             
             export namespace omitted {}
             
-            export type omitted<GPAnnotation> = {}
+            export type omitted<GPAnnotation> = null
             
             export type shorthand<GPAnnotation> = gh.T.OpenArrayToken<T.Annotation<GPAnnotation>>
             
@@ -72,8 +72,8 @@ export namespace T {
         }
         
         export type _ltype<GPAnnotation> = 
-            | ['mixin', {}]
-            | ['omitted', {}]
+            | ['mixin', null]
+            | ['omitted', null]
             | ['shorthand', gh.T.OpenArrayToken<T.Annotation<GPAnnotation>>]
             | ['verbose', gh.T.OpenObjectToken<T.Annotation<GPAnnotation>>]
     }
@@ -81,8 +81,8 @@ export namespace T {
     export type Group<GPAnnotation> = {
         readonly 'definition': gschema.T.group<T.Annotation<GPAnnotation>>
         readonly 'type': 
-            | ['mixin', {}]
-            | ['omitted', {}]
+            | ['mixin', null]
+            | ['omitted', null]
             | ['shorthand', gh.T.OpenArrayToken<T.Annotation<GPAnnotation>>]
             | ['verbose', gh.T.OpenObjectToken<T.Annotation<GPAnnotation>>]
     }

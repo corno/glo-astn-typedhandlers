@@ -12,10 +12,10 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'license': "TBD",
 
     'dependencies': d({
-        "glo-pareto-common": {},
-        "glo-astn-schema": {},
-        "glo-astn-handlers": {},
-        "glo-astn-tokenconsumer": {},
+        "glo-pareto-common": null,
+        "glo-astn-schema": null,
+        "glo-astn-handlers": null,
+        "glo-astn-tokenconsumer": null,
     }),
     'type': ['glossary', {
         'glossary': glossary,
