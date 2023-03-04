@@ -12,11 +12,6 @@ import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossa
 const d = pd.d
 
 export const $: gglossary.T.Glossary<pd.SourceLocation> = {
-    'imports': d({
-        //"common": "glo-pareto-common"
-        "schema": "glo-astn-schema",
-        "h": "glo-astn-handlers",
-    }),
     'parameters': d({
         "Annotation": null,
     }),
