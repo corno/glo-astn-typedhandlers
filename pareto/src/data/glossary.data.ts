@@ -4,7 +4,7 @@ import {
     string,
     typeReference,
     interfaceReference,
-    method, dictionary, group, member, taggedUnion, types, func, data, type, computed, typeParameter, parametrizedType, parametrizedReference, boolean, glossaryParameter, optional, null_
+    interfaceMethod, dictionary, group, member, taggedUnion, types, func, data, type, computed, typeParameter, parametrizedType, parametrizedReference, boolean, glossaryParameter, optional, null_
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -83,48 +83,50 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "groupDefinition": member(parametrizedReference("schema", { "Annotation": typeReference("Annotation") }, "group")),
         })),
     }),
+    'builders': d({
+    }),
     'interfaces': d({
         "GroupHandler": ['group', {
             'members': d({
-                "onUnexpectedProperty": method(typeReference("UnexpectedProperty")),
-                "onProperty": method(typeReference("Property"), ['reference', interfaceReference("ValueHandler")], false),
-                "onClose": method(typeReference("GroupClose")),
+                "onUnexpectedProperty": interfaceMethod(typeReference("UnexpectedProperty")),
+                "onProperty": interfaceMethod(typeReference("Property"), ['reference', interfaceReference("ValueHandler")]),
+                "onClose": interfaceMethod(typeReference("GroupClose")),
             })
         }],
         "DictionaryHandler": ['group', {
             'members': d({
-                "onEntry": method(typeReference("Entry"), ['reference', interfaceReference("ValueHandler")], false),
-                "onClose": method(typeReference("DictionaryClose")),
+                "onEntry": interfaceMethod(typeReference("Entry"), ['reference', interfaceReference("ValueHandler")]),
+                "onClose": interfaceMethod(typeReference("DictionaryClose")),
             })
         }],
         "ListHandler": ['group', {
             'members': d({
-                "onElement": method(null, ['reference', interfaceReference("ValueHandler")], false),
-                "onClose": method(typeReference("ListClose")),
+                "onElement": interfaceMethod(null, ['reference', interfaceReference("ValueHandler")]),
+                "onClose": interfaceMethod(typeReference("ListClose")),
             })
         }],
         "TaggedUnionHandler": ['group', {
             'members': d({
-                "onOption": method(typeReference("Option"), ['reference', interfaceReference("ValueHandler")], false),
-                "onUnexpectedOption": method(typeReference("Option"), ['reference', interfaceReference("ValueHandler")], false),
-                "onEnd": method(null),
+                "onOption": interfaceMethod(typeReference("Option"), ['reference', interfaceReference("ValueHandler")]),
+                "onUnexpectedOption": interfaceMethod(typeReference("Option"), ['reference', interfaceReference("ValueHandler")]),
+                "onEnd": interfaceMethod(null),
             })
         }],
         "ValueHandler": ['group', {
             'members': d({
-                "onGroup": method(typeReference("Group"), ['reference', interfaceReference("GroupHandler")], false),
-                "onList": method(typeReference("List"), ['reference', interfaceReference("ListHandler")], false),
-                "onDictionary": method(typeReference("Dictionary"), ['reference', interfaceReference("DictionaryHandler")], false),
-                "onTypeReference": method(typeReference("TypeReference"), ['reference', interfaceReference("ValueHandler")], false),
-                "onTaggedUnion": method(typeReference("TaggedUnion"), ['reference', interfaceReference("TaggedUnionHandler")], false),
-                "onSimpleString": method(typeReference("SimpleString")),
-                "onMultilineString": method(typeReference("MultilineString")),
+                "onGroup": interfaceMethod(typeReference("Group"), ['reference', interfaceReference("GroupHandler")]),
+                "onList": interfaceMethod(typeReference("List"), ['reference', interfaceReference("ListHandler")]),
+                "onDictionary": interfaceMethod(typeReference("Dictionary"), ['reference', interfaceReference("DictionaryHandler")]),
+                "onTypeReference": interfaceMethod(typeReference("TypeReference"), ['reference', interfaceReference("ValueHandler")]),
+                "onTaggedUnion": interfaceMethod(typeReference("TaggedUnion"), ['reference', interfaceReference("TaggedUnionHandler")]),
+                "onSimpleString": interfaceMethod(typeReference("SimpleString")),
+                "onMultilineString": interfaceMethod(typeReference("MultilineString")),
             })
         }],
         "RootHandler": ['group', {
             'members': d({
                 "root": ['reference', interfaceReference("ValueHandler")],
-                "onEnd": method(null),
+                "onEnd": interfaceMethod(null),
             })
         }],
     }),

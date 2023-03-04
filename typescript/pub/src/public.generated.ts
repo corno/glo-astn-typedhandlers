@@ -1,43 +1,50 @@
 import * as pt from 'pareto-core-types'
 
-import { T   } from './types.generated'
+import { T } from './types.generated'
 
-import * as gh from "glo-astn-handlers"
-import * as gschema from "glo-astn-schema"
+import * as g_h from "glo-astn-handlers"
+import * as g_schema from "glo-astn-schema"
 
-export type IDictionaryHandler<GPAnnotation> = {
-    'onClose': ($: T.DictionaryClose<GPAnnotation>, ) => void
-    'onEntry': ($: T.Entry<GPAnnotation>, ) => IValueHandler<GPAnnotation>
+export namespace I {
+    
+    export type DictionaryHandler<GAnnotation> = {
+        'onClose': ($: T.DictionaryClose<GAnnotation>, ) => void
+        'onEntry': ($: T.Entry<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+    }
+    
+    export type GroupHandler<GAnnotation> = {
+        'onClose': ($: T.GroupClose<GAnnotation>, ) => void
+        'onProperty': ($: T.Property<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        'onUnexpectedProperty': ($: T.UnexpectedProperty<GAnnotation>, ) => void
+    }
+    
+    export type ListHandler<GAnnotation> = {
+        'onClose': ($: T.ListClose<GAnnotation>, ) => void
+        'onElement': () => I.ValueHandler<GAnnotation>
+    }
+    
+    export type RootHandler<GAnnotation> = {
+        'onEnd': () => void
+        'root': I.ValueHandler<GAnnotation>
+    }
+    
+    export type TaggedUnionHandler<GAnnotation> = {
+        'onEnd': () => void
+        'onOption': ($: T.Option<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        'onUnexpectedOption': ($: T.Option<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+    }
+    
+    export type ValueHandler<GAnnotation> = {
+        'onDictionary': ($: T.Dictionary<GAnnotation>, ) => I.DictionaryHandler<GAnnotation>
+        'onGroup': ($: T.Group<GAnnotation>, ) => I.GroupHandler<GAnnotation>
+        'onList': ($: T.List<GAnnotation>, ) => I.ListHandler<GAnnotation>
+        'onMultilineString': ($: T.MultilineString<GAnnotation>, ) => void
+        'onSimpleString': ($: T.SimpleString<GAnnotation>, ) => void
+        'onTaggedUnion': ($: T.TaggedUnion<GAnnotation>, ) => I.TaggedUnionHandler<GAnnotation>
+        'onTypeReference': ($: T.TypeReference<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+    }
 }
 
-export type IGroupHandler<GPAnnotation> = {
-    'onClose': ($: T.GroupClose<GPAnnotation>, ) => void
-    'onProperty': ($: T.Property<GPAnnotation>, ) => IValueHandler<GPAnnotation>
-    'onUnexpectedProperty': ($: T.UnexpectedProperty<GPAnnotation>, ) => void
-}
+export namespace B {}
 
-export type IListHandler<GPAnnotation> = {
-    'onClose': ($: T.ListClose<GPAnnotation>, ) => void
-    'onElement': () => IValueHandler<GPAnnotation>
-}
-
-export type IRootHandler<GPAnnotation> = {
-    'onEnd': () => void
-    'root': IValueHandler<GPAnnotation>
-}
-
-export type ITaggedUnionHandler<GPAnnotation> = {
-    'onEnd': () => void
-    'onOption': ($: T.Option<GPAnnotation>, ) => IValueHandler<GPAnnotation>
-    'onUnexpectedOption': ($: T.Option<GPAnnotation>, ) => IValueHandler<GPAnnotation>
-}
-
-export type IValueHandler<GPAnnotation> = {
-    'onDictionary': ($: T.Dictionary<GPAnnotation>, ) => IDictionaryHandler<GPAnnotation>
-    'onGroup': ($: T.Group<GPAnnotation>, ) => IGroupHandler<GPAnnotation>
-    'onList': ($: T.List<GPAnnotation>, ) => IListHandler<GPAnnotation>
-    'onMultilineString': ($: T.MultilineString<GPAnnotation>, ) => void
-    'onSimpleString': ($: T.SimpleString<GPAnnotation>, ) => void
-    'onTaggedUnion': ($: T.TaggedUnion<GPAnnotation>, ) => ITaggedUnionHandler<GPAnnotation>
-    'onTypeReference': ($: T.TypeReference<GPAnnotation>, ) => IValueHandler<GPAnnotation>
-}
+export namespace F {}
