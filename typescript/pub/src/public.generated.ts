@@ -8,40 +8,41 @@ import * as g_schema from "glo-astn-schema"
 export namespace I {
     
     export type DictionaryHandler<GAnnotation> = {
-        'onClose': ($: T.DictionaryClose<GAnnotation>, ) => void
-        'onEntry': ($: T.Entry<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        'data': ($: T.Entry<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        'end': ($: T.DictionaryClose<GAnnotation>, ) => void
     }
     
     export type GroupHandler<GAnnotation> = {
-        'onClose': ($: T.GroupClose<GAnnotation>, ) => void
-        'onProperty': ($: T.Property<GAnnotation>, ) => I.ValueHandler<GAnnotation>
-        'onUnexpectedProperty': ($: T.UnexpectedProperty<GAnnotation>, ) => void
+        'data': {
+            'property': ($: T.Property<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+            'unexpectedProperty': ($: T.UnexpectedProperty<GAnnotation>, ) => void
+        }
+        'end': ($: T.GroupClose<GAnnotation>, ) => void
     }
     
     export type ListHandler<GAnnotation> = {
-        'onClose': ($: T.ListClose<GAnnotation>, ) => void
-        'onElement': () => I.ValueHandler<GAnnotation>
+        'data': () => I.ValueHandler<GAnnotation>
+        'end': ($: T.ListClose<GAnnotation>, ) => void
     }
     
-    export type RootHandler<GAnnotation> = {
-        'onEnd': () => void
-        'root': I.ValueHandler<GAnnotation>
-    }
+    export type RootHandler<GAnnotation> = () => I.ValueHandler<GAnnotation>
     
     export type TaggedUnionHandler<GAnnotation> = {
-        'onEnd': () => void
-        'onOption': ($: T.Option<GAnnotation>, ) => I.ValueHandler<GAnnotation>
-        'onUnexpectedOption': ($: T.Option<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        'data': {
+            'option': ($: T.Option<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+            'unexpectedOption': ($: T.Option<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        }
+        'end': () => void
     }
     
     export type ValueHandler<GAnnotation> = {
-        'onDictionary': ($: T.Dictionary<GAnnotation>, ) => I.DictionaryHandler<GAnnotation>
-        'onGroup': ($: T.Group<GAnnotation>, ) => I.GroupHandler<GAnnotation>
-        'onList': ($: T.List<GAnnotation>, ) => I.ListHandler<GAnnotation>
-        'onMultilineString': ($: T.MultilineString<GAnnotation>, ) => void
-        'onSimpleString': ($: T.SimpleString<GAnnotation>, ) => void
-        'onTaggedUnion': ($: T.TaggedUnion<GAnnotation>, ) => I.TaggedUnionHandler<GAnnotation>
-        'onTypeReference': ($: T.TypeReference<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        'dictionary': ($: T.Dictionary<GAnnotation>, ) => I.DictionaryHandler<GAnnotation>
+        'group': ($: T.Group<GAnnotation>, ) => I.GroupHandler<GAnnotation>
+        'list': ($: T.List<GAnnotation>, ) => I.ListHandler<GAnnotation>
+        'multilineString': ($: T.MultilineString<GAnnotation>, ) => void
+        'simpleString': ($: T.SimpleString<GAnnotation>, ) => void
+        'taggedUnion': ($: T.TaggedUnion<GAnnotation>, ) => I.TaggedUnionHandler<GAnnotation>
+        'typeReference': ($: T.TypeReference<GAnnotation>, ) => I.ValueHandler<GAnnotation>
     }
 }
 

@@ -21,7 +21,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'type': ['glossary', {
         'root': glossary,
         'imports': d({
-            //"common": external("glo-pareto-common")
+            //"common": external("glo-pareto-common"),
             "schema": external("glo-astn-schema"),
             "h": external("glo-astn-handlers"),
         }),
