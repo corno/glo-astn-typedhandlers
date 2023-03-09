@@ -1,1 +1,0 @@
-This ASTN parser API is implemented by astn-parser-lib and consumed by astn-tokenizer-lib
