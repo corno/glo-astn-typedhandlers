@@ -1,10 +1,7 @@
-import * as pd from 'pareto-core-data'
 import {
-    string,
-    typeReference,
-    interfaceReference,
-    interfaceMethod, dictionary, group, member, taggedUnion, types, type, computed, typeParameter, parametrizedType, boolean, glossaryParameter, optional, null_, stream, choice, imp, ref, externalTypeReference
+    aInterfaceMethod, aInterfaceReference, choice, dictionary, externalTypeReference, glossaryParameter, group, imp, member, null_, optional, ref, stream, string, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
+import * as pd from 'pareto-core-data'
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
@@ -90,41 +87,47 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "groupDefinition": member(ref(externalTypeReference("schema", "group"))),
         })),
     }),
-    'type': ['asynchronous', {
+    'asynchronous': {
         'interfaces': d({
             "GroupHandler": stream(
                 choice({
-                    "unexpectedProperty": interfaceMethod(typeReference("UnexpectedProperty")),
-                    "property": interfaceMethod(typeReference("Property"), ['reference', interfaceReference("ValueHandler")]),
+                    "unexpectedProperty": aInterfaceMethod(typeReference("UnexpectedProperty")),
+                    "property": aInterfaceMethod(typeReference("Property"), ['reference', aInterfaceReference("ValueHandler")]),
                 }),
-                interfaceMethod(typeReference("GroupClose")),
+                aInterfaceMethod(typeReference("GroupClose")),
             ),
             "DictionaryHandler": stream(
-                interfaceMethod(typeReference("Entry"), ['reference', interfaceReference("ValueHandler")]),
-                interfaceMethod(typeReference("DictionaryClose")),
+                aInterfaceMethod(typeReference("Entry"), ['reference', aInterfaceReference("ValueHandler")]),
+                aInterfaceMethod(typeReference("DictionaryClose")),
             ),
             "ListHandler": stream(
-                interfaceMethod(null, ['reference', interfaceReference("ValueHandler")]),
-                interfaceMethod(typeReference("ListClose")),
+                aInterfaceMethod(null, ['reference', aInterfaceReference("ValueHandler")]),
+                aInterfaceMethod(typeReference("ListClose")),
             ),
             "TaggedUnionHandler": stream(
                 choice({
-                    "option": interfaceMethod(typeReference("Option"), ['reference', interfaceReference("ValueHandler")]),
-                    "unexpectedOption": interfaceMethod(typeReference("Option"), ['reference', interfaceReference("ValueHandler")]),
+                    "option": aInterfaceMethod(typeReference("Option"), ['reference', aInterfaceReference("ValueHandler")]),
+                    "unexpectedOption": aInterfaceMethod(typeReference("Option"), ['reference', aInterfaceReference("ValueHandler")]),
                 }),
-                interfaceMethod(null),
+                aInterfaceMethod(null),
             ),
             "ValueHandler": choice({
-                "group": interfaceMethod(typeReference("Group"), ['reference', interfaceReference("GroupHandler")]),
-                "list": interfaceMethod(typeReference("List"), ['reference', interfaceReference("ListHandler")]),
-                "dictionary": interfaceMethod(typeReference("Dictionary"), ['reference', interfaceReference("DictionaryHandler")]),
-                "typeReference": interfaceMethod(typeReference("TypeReference"), ['reference', interfaceReference("ValueHandler")]),
-                "taggedUnion": interfaceMethod(typeReference("TaggedUnion"), ['reference', interfaceReference("TaggedUnionHandler")]),
-                "simpleString": interfaceMethod(typeReference("SimpleString")),
-                "multilineString": interfaceMethod(typeReference("MultilineString")),
+                "group": aInterfaceMethod(typeReference("Group"), ['reference', aInterfaceReference("GroupHandler")]),
+                "list": aInterfaceMethod(typeReference("List"), ['reference', aInterfaceReference("ListHandler")]),
+                "dictionary": aInterfaceMethod(typeReference("Dictionary"), ['reference', aInterfaceReference("DictionaryHandler")]),
+                "typeReference": aInterfaceMethod(typeReference("TypeReference"), ['reference', aInterfaceReference("ValueHandler")]),
+                "taggedUnion": aInterfaceMethod(typeReference("TaggedUnion"), ['reference', aInterfaceReference("TaggedUnionHandler")]),
+                "simpleString": aInterfaceMethod(typeReference("SimpleString")),
+                "multilineString": aInterfaceMethod(typeReference("MultilineString")),
             }),
-            "RootHandler": interfaceMethod(null, ['reference', interfaceReference("ValueHandler")]),
+            "RootHandler": aInterfaceMethod(null, ['reference', aInterfaceReference("ValueHandler")]),
         }),
-        'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({}),
-    }]
+        'constructors': d({}),
+        'functions': d({}),
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'constructors': d({}),
+        'functions': d({}),
+    },
 }
