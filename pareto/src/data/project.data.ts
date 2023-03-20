@@ -1,7 +1,7 @@
 import * as pd from 'pareto-core-data'
 
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
-import { external, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
+import { external } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
 const d = pd.d
 
