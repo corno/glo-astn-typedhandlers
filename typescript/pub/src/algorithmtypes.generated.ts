@@ -16,8 +16,8 @@ export namespace ASYNC {
         
         export type GroupHandler<GAnnotation> = {
             'data': {
-                'property': ($: T.Property<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
-                'unexpectedProperty': ($: T.UnexpectedProperty<GAnnotation>, ) => void
+                readonly 'property': ($: T.Property<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
+                readonly 'unexpectedProperty': ($: T.UnexpectedProperty<GAnnotation>, ) => void
             }
             'end': ($: T.GroupClose<GAnnotation>, ) => void
         }
@@ -31,20 +31,20 @@ export namespace ASYNC {
         
         export type TaggedUnionHandler<GAnnotation> = {
             'data': {
-                'option': ($: T.Option<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
-                'unexpectedOption': ($: T.Option<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
+                readonly 'option': ($: T.Option<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
+                readonly 'unexpectedOption': ($: T.Option<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
             }
             'end': () => void
         }
         
         export type ValueHandler<GAnnotation> = {
-            'dictionary': ($: T.Dictionary<GAnnotation>, ) => ASYNC.I.DictionaryHandler<GAnnotation>
-            'group': ($: T.Group<GAnnotation>, ) => ASYNC.I.GroupHandler<GAnnotation>
-            'list': ($: T.List<GAnnotation>, ) => ASYNC.I.ListHandler<GAnnotation>
-            'multilineString': ($: T.MultilineString<GAnnotation>, ) => void
-            'simpleString': ($: T.SimpleString<GAnnotation>, ) => void
-            'taggedUnion': ($: T.TaggedUnion<GAnnotation>, ) => ASYNC.I.TaggedUnionHandler<GAnnotation>
-            'typeReference': ($: T.TypeReference<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
+            readonly 'dictionary': ($: T.Dictionary<GAnnotation>, ) => ASYNC.I.DictionaryHandler<GAnnotation>
+            readonly 'group': ($: T.Group<GAnnotation>, ) => ASYNC.I.GroupHandler<GAnnotation>
+            readonly 'list': ($: T.List<GAnnotation>, ) => ASYNC.I.ListHandler<GAnnotation>
+            readonly 'multilineString': ($: T.MultilineString<GAnnotation>, ) => void
+            readonly 'simpleString': ($: T.SimpleString<GAnnotation>, ) => void
+            readonly 'taggedUnion': ($: T.TaggedUnion<GAnnotation>, ) => ASYNC.I.TaggedUnionHandler<GAnnotation>
+            readonly 'typeReference': ($: T.TypeReference<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
         }
     }
     
