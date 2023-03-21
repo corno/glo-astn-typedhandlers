@@ -1,5 +1,5 @@
 import {
-    aInterfaceMethod, aInterfaceReference, choice, dictionary, externalTypeReference, glossaryParameter, group, imp, member, null_, optional, ref, stream, string, taggedUnion, type, typeReference
+    aInterfaceMethod, aInterfaceReference, choice, dictionary, externalTypeReference, glossaryParameter, group, imp, member, null_, optional, ref, streamconsumer, string, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 import * as pd from 'pareto-core-data'
 
@@ -89,22 +89,22 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'asynchronous': {
         'interfaces': d({
-            "GroupHandler": stream(
+            "GroupHandler": streamconsumer(
                 choice({
                     "unexpectedProperty": aInterfaceMethod(typeReference("UnexpectedProperty")),
                     "property": aInterfaceMethod(typeReference("Property"), ['reference', aInterfaceReference("ValueHandler")]),
                 }),
                 aInterfaceMethod(typeReference("GroupClose")),
             ),
-            "DictionaryHandler": stream(
+            "DictionaryHandler": streamconsumer(
                 aInterfaceMethod(typeReference("Entry"), ['reference', aInterfaceReference("ValueHandler")]),
                 aInterfaceMethod(typeReference("DictionaryClose")),
             ),
-            "ListHandler": stream(
+            "ListHandler": streamconsumer(
                 aInterfaceMethod(null, ['reference', aInterfaceReference("ValueHandler")]),
                 aInterfaceMethod(typeReference("ListClose")),
             ),
-            "TaggedUnionHandler": stream(
+            "TaggedUnionHandler": streamconsumer(
                 choice({
                     "option": aInterfaceMethod(typeReference("Option"), ['reference', aInterfaceReference("ValueHandler")]),
                     "unexpectedOption": aInterfaceMethod(typeReference("Option"), ['reference', aInterfaceReference("ValueHandler")]),
