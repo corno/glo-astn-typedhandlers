@@ -1,4 +1,5 @@
 import {
+    aInterface,
     aInterfaceMethod, aInterfaceReference, choice, dictionary, externalTypeReference, glossaryParameter, group, imp, member, null_, optional, ref, streamconsumer, string, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 import * as pd from 'pareto-core-data'
@@ -13,14 +14,13 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'imports': d({
         "h": imp({
-            "Annotation": typeReference("Annotation")
+            "Annotation": glossaryParameter("Annotation")
         }),
         "schema": imp({
-            "Annotation": typeReference("Annotation")
+            "Annotation": glossaryParameter("Annotation")
         }),
     }),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation")),
         "Entry": type(group({
             "token": member(optional(ref(externalTypeReference("h", "SimpleStringToken")))),
         })),
@@ -89,29 +89,29 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'asynchronous': {
         'interfaces': d({
-            "GroupHandler": streamconsumer(
+            "GroupHandler": aInterface(streamconsumer(
                 choice({
                     "unexpectedProperty": aInterfaceMethod(typeReference("UnexpectedProperty")),
                     "property": aInterfaceMethod(typeReference("Property"), ['reference', aInterfaceReference("ValueHandler")]),
                 }),
                 aInterfaceMethod(typeReference("GroupClose")),
-            ),
-            "DictionaryHandler": streamconsumer(
+            )),
+            "DictionaryHandler": aInterface(streamconsumer(
                 aInterfaceMethod(typeReference("Entry"), ['reference', aInterfaceReference("ValueHandler")]),
                 aInterfaceMethod(typeReference("DictionaryClose")),
-            ),
-            "ListHandler": streamconsumer(
+            )),
+            "ListHandler": aInterface(streamconsumer(
                 aInterfaceMethod(null, ['reference', aInterfaceReference("ValueHandler")]),
                 aInterfaceMethod(typeReference("ListClose")),
-            ),
-            "TaggedUnionHandler": streamconsumer(
+            )),
+            "TaggedUnionHandler": aInterface(streamconsumer(
                 choice({
                     "option": aInterfaceMethod(typeReference("Option"), ['reference', aInterfaceReference("ValueHandler")]),
                     "unexpectedOption": aInterfaceMethod(typeReference("Option"), ['reference', aInterfaceReference("ValueHandler")]),
                 }),
                 aInterfaceMethod(null),
-            ),
-            "ValueHandler": choice({
+            )),
+            "ValueHandler": aInterface(choice({
                 "group": aInterfaceMethod(typeReference("Group"), ['reference', aInterfaceReference("GroupHandler")]),
                 "list": aInterfaceMethod(typeReference("List"), ['reference', aInterfaceReference("ListHandler")]),
                 "dictionary": aInterfaceMethod(typeReference("Dictionary"), ['reference', aInterfaceReference("DictionaryHandler")]),
@@ -119,15 +119,15 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 "taggedUnion": aInterfaceMethod(typeReference("TaggedUnion"), ['reference', aInterfaceReference("TaggedUnionHandler")]),
                 "simpleString": aInterfaceMethod(typeReference("SimpleString")),
                 "multilineString": aInterfaceMethod(typeReference("MultilineString")),
-            }),
-            "RootHandler": aInterfaceMethod(null, ['reference', aInterfaceReference("ValueHandler")]),
+            })),
+            "RootHandler": aInterface(aInterfaceMethod(null, ['reference', aInterfaceReference("ValueHandler")])),
         }),
         'algorithms': d({}),
-        
+
     },
     'synchronous': {
         'interfaces': d({}),
         'algorithms': d({}),
-        
+
     },
 }
