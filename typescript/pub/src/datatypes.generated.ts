@@ -3,6 +3,8 @@ import * as pt from 'pareto-core-types'
 import * as g_h from "glo-astn-handlers"
 import * as g_schema from "glo-astn-schema"
 
+export namespace N {}
+
 export namespace T {
     
     export namespace Dictionary {
